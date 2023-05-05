@@ -10,6 +10,10 @@ import (
 	"net/url"
 )
 
+type PerformUpsert struct {
+	FieldsToMergeOn []string `json:"fieldsToMergeOn"`
+}
+
 // Records base type of airtable records.
 type Records struct {
 	Records []*Record `json:"records"`
@@ -20,6 +24,8 @@ type Records struct {
 	// Automatic conversion is disabled by default to ensure data integrity,
 	// but it may be helpful for integrating with 3rd party data sources.
 	Typecast bool `json:"typecast,omitempty"`
+
+	PerformUpsert *PerformUpsert `json:"performUpsert,omitempty"`
 }
 
 // Table represents table object.
